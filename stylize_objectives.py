@@ -25,7 +25,7 @@ class objective_class():
         if objective == 'remd_dp_g':
             self.eval = self.gen_remd_dp_objective_guided
 
-    def gen_remd_dp_objective_guided(self, z_x, z_c, z_s, gz, d_ell, d_weight=10.0, content_weight=4.0, moment_weight=1.0, style_loss_func=contextual_loss.remd_loss, content_loss_func=dp_loss, h=1.0):
+    def gen_remd_dp_objective_guided(self, z_x, z_c, z_s, gz, d_ell, d_weight=10.0, content_weight=4.0, moment_weight=1.0, style_loss_func=contextual_loss.remd_loss, content_loss_func=contextual_loss.dp_loss, h=1.0):
 
 
         ## Extract Random Subset of Features from Stylized Image & Content Image ##
