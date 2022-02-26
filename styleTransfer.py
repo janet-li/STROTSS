@@ -55,7 +55,7 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
             lr = 1e-3
 
         ### Style Transfer at this scale ###
-        stylized_im, final_loss = style_transfer(stylized_im, content_im, style_path, output_path, scl, long_side, 0., use_guidance=use_guidance, coords=coords, content_weight=content_weight, lr=lr, regions=regions)
+        stylized_im, final_loss = st_helper.style_transfer(stylized_im, content_im, style_path, output_path, scl, long_side, 0., use_guidance=use_guidance, coords=coords, content_weight=content_weight, lr=lr, regions=regions)
 
         canvas = F.upsample(stylized_im,(content_im.size(2),content_im.size(3)),mode='bilinear')[0].data.cpu().numpy().transpose(1,2,0)
         
