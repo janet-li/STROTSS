@@ -19,7 +19,7 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     
     start = time.time()
 
-    content_im_big = utils.to_device(Variable(load_path_for_pytorch(content_path,512,force_scale=True).unsqueeze(0)))
+    content_im_big = utils.to_device(Variable(utils.load_path_for_pytorch(content_path,512,force_scale=True).unsqueeze(0)))
 
     for scl in range(1,max_scl):
 
