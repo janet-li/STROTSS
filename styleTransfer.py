@@ -27,8 +27,8 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
         lr = 2e-3
 
         ### Load Style and Content Image ###
-        content_im = utils.to_device(Variable(load_path_for_pytorch(content_path,long_side,force_scale=True).unsqueeze(0)))
-        content_im_mean = utils.to_device(Variable(load_path_for_pytorch(style_path,long_side,force_scale=True).unsqueeze(0))).mean(2,keepdim=True).mean(3,keepdim=True)
+        content_im = utils.to_device(Variable(utils.load_path_for_pytorch(content_path,long_side,force_scale=True).unsqueeze(0)))
+        content_im_mean = utils.to_device(Variable(utils.load_path_for_pytorch(style_path,long_side,force_scale=True).unsqueeze(0))).mean(2,keepdim=True).mean(3,keepdim=True)
         
         ### Compute bottom level of laplaccian pyramid for content image at current scale ###
         lap = content_im.clone()-F.upsample(F.upsample(content_im,(content_im.size(2)//2,content_im.size(3)//2),mode='bilinear'),(content_im.size(2),content_im.size(3)),mode='bilinear')
