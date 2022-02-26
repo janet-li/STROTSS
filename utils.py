@@ -197,6 +197,8 @@ def extract_regions(content_path,style_path):
         c_expand =  np.expand_dims(np.expand_dims(c,0),0)
         
         s_mask = np.equal(np.sum(np.subtract(s_regions, c_expand),axis=2),0).astype(np.float32)
+        print(c_regions)
+        print(c_expand)
         c_mask = np.equal(np.sum(np.subtract(c_regions, c_expand),axis=2),0).astype(np.float32)
 
         s_out.append(s_mask)
