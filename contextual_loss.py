@@ -3,7 +3,7 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 import numpy as np
 import time
-import utils
+from utils import *
 
 def pairwise_distances_sq_l2(x, y):
 
