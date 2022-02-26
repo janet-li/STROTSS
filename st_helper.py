@@ -28,7 +28,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
     temp_name = './'+output_path.split('/')[-1].split('.')[0]+'_temp.png'
 
     ### Keep track of current output image for GUI ###
-    canvas = aug_canvas(stylized_im, scl, 0)
+    canvas = utils.aug_canvas(stylized_im, scl, 0)
     imwrite(temp_name, canvas)
     shutil.move(temp_name, output_path)
 
@@ -137,7 +137,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
             
         ## Periodically save output image for GUI ###
         if (i+1)%10==0:
-            canvas = aug_canvas(stylized_im, scl, i)
+            canvas = utils.aug_canvas(stylized_im, scl, i)
             imwrite(temp_name, canvas)
             shutil.move(temp_name, output_path)
 
