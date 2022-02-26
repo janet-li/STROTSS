@@ -10,6 +10,7 @@ import numpy as np
 from imageio import imread, imwrite
 
 from st_helper import *
+from . import utils
 from utils import *
 
 def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidance,regions, output_path='./output.png'):
@@ -79,7 +80,7 @@ if __name__=='__main__':
     use_guidance_region = '-gr' in sys.argv
     use_guidance_points = False
     use_gpu = not ('-cpu' in sys.argv)
-    # utils.use_gpu = use_gpu
+    utils.use_gpu = use_gpu
 
 
     paths = glob(style_path+'*')
