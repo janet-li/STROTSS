@@ -33,7 +33,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
     shutil.move(temp_name, output_path)
 
     #### Define feature extractor ###
-    cnn = utils.to_device(Vgg16_pt())
+    cnn = utils.to_device(vgg_pt.Vgg16_pt())
 
     phi = lambda x: cnn.forward(x)
     phi2 = lambda x, y, z: cnn.forward_cat(x,z,samps=y,forward_func=cnn.forward)
