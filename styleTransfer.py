@@ -74,7 +74,7 @@ if __name__=='__main__':
     content_path = sys.argv[1]
     style_path = sys.argv[2]
     content_weight = float(sys.argv[3])*16.0
-    max_scl = int(sys.argv[4])
+    max_scl = 5
 
     use_guidance_region = '-gr' in sys.argv
     use_guidance_points = False
