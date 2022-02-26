@@ -4,8 +4,8 @@ import torch
 from torch.autograd import Variable
 import torch.nn.functional as F
 
-from .contextual_loss import *
-from . import utils
+import contextual_loss
+import utils
 
 use_random=True
 
