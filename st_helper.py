@@ -44,7 +44,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
 
     ### Define Optimizer ###
     if use_pyr:
-        s_pyr = dec_lap_pyr(stylized_im,5)
+        s_pyr = pyr_lap.dec_lap_pyr(stylized_im,5)
         s_pyr = [Variable(li.data,requires_grad=True) for li in s_pyr]
     else:
         s_pyr = [Variable(stylized_im.data,requires_grad=True)]
