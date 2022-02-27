@@ -114,6 +114,7 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
 
     canvas = torch.clamp( stylized_im[0], 0., 1.).data.cpu().numpy().transpose(1,2,0)
     
+    '''
     img = PIL.Image.open(content_path)
     content_pil = img.convert('RGB')
     content_np = pil_to_np(content_pil)
@@ -123,12 +124,14 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     canvas_t = Variable(torch.from_numpy(canvas))
     result_image = tensor_to_np(tensor_resample(canvas_t, [content_full.shape[2], content_full.shape[3]]))
 
+    
     # renormalize image
     result_image -= result_image.min()
     result_image /= result_image.max()
-
     result = np_to_pil(result_image * 255.)
     show_img(pil_to_np(result))
+    '''
+    show_img(canvas)
     imwrite(output_path,canvas)
     return final_loss , canvas
 
