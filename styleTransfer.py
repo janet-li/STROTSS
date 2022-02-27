@@ -136,6 +136,8 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     show_img(pil_to_np(result))
     '''
     canvas = (canvas*255.).astype(np.uint8)
+    print(canvas)
+    print(output_path)
     im = PIL.Image.fromarray(canvas)
     im.save(output_path)
     show_img(canvas)
