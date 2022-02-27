@@ -138,7 +138,8 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     
     show_img(canvas)
     plt.imshow(canvas)
-    imwrite(output_path, img_as_ubyte(canvas))
+    #imwrite(output_path, img_as_ubyte(canvas))
+    imwrite(output_path, (canvas*255.).astype(np.uint8))
     #img = mpimg.imread(canvas)
     #imgplot = plt.imshow(img)
     plt.show()
