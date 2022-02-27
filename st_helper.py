@@ -59,7 +59,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
 
     ### Create Objective Object ###
     objective_wrapper = 0
-    objective_wrapper = objective_class(objective='remd_dp_g')
+    objective_wrapper = stylize_objectives.objective_class(objective='remd_dp_g')
     
 
     z_s_all = []
