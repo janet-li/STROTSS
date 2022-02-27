@@ -185,8 +185,6 @@ def build_guidance(content_path,style_path,coords,augment=True):
 def extract_regions(content_path,style_path):
     s_regions = imread(style_path).transpose(1,0,2)
     c_regions = imread(content_path).transpose(1,0,2)
-    # TEMP
-    # c_regions = np.swapaxes(c_regions, 1, 2)
 
     color_codes,c1 = np.unique(s_regions.reshape(-1, s_regions.shape[2]), axis=0,return_counts=True)
 
@@ -199,13 +197,11 @@ def extract_regions(content_path,style_path):
         c_expand =  np.expand_dims(np.expand_dims(c,0),0)
         
         s_mask = np.equal(np.sum(np.subtract(s_regions, c_expand),axis=2),0).astype(np.float32)
-        #print(c_regions)
-        #print(c_expand)
+
         temp1 = np.subtract(c_regions, c_expand)
         temp2 = np.sum(temp1, axis=2)
         temp3 = np.equal(temp2, 0)
         c_mask = temp3.astype(np.float32)
-        #c_mask = np.equal(np.sum(np.subtract(c_regions, c_expand),axis=2),0).astype(np.float32)
 
         s_out.append(s_mask)
         c_out.append(c_mask)
