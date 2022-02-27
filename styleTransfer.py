@@ -3,6 +3,7 @@ import math
 import sys
 
 import torch
+import os
 from torch.autograd import Variable
 import torch.nn.functional as F
 import torch.optim as optim
