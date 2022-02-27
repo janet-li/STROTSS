@@ -110,6 +110,7 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     content_pil = img.convert('RGB')
     content_np = pil_to_np(content_pil)
     device='cuda:0'
+    space='vgg'
     content_full = np_to_tensor(content_np, space).to(device)
     result_image = tensor_to_np(tensor_resample(canvas, [content_full.shape[2], content_full.shape[3]]))
 
