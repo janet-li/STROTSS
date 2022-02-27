@@ -135,8 +135,8 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     show_img(canvas)
     plt.imshow(canvas)
     imwrite(output_path,canvas)
-    img = mpimg.imread(canvas)
-    imgplot = plt.imshow(img)
+    #img = mpimg.imread(canvas)
+    #imgplot = plt.imshow(img)
     plt.show()
     return final_loss , canvas
 
