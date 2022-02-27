@@ -12,10 +12,18 @@ from glob import glob
 from io import BytesIO
 import requests
 import matplotlib.pyplot as plt
+import torchvision.transforms as transforms
 
 import st_helper
 import utils
 import PIL
+
+def np_to_tensor_correct(npy):
+    pil = np_to_pil(npy)
+    transform = transforms.Compose([transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+    return transform(pil).unsqueeze(0)
 
 def np_to_tensor(npy, space):
     if space == 'vgg':
