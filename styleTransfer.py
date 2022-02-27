@@ -17,6 +17,11 @@ import st_helper
 import utils
 import PIL
 
+def np_to_tensor(npy, space):
+    if space == 'vgg':
+        return np_to_tensor_correct(npy)
+    return (torch.Tensor(npy.astype(np.float) / 127.5) - 1.0).permute((2,0,1)).unsqueeze(0)
+
 def tensor_resample(tensor, dst_size, mode='bilinear'):
     return F.interpolate(tensor, dst_size, mode=mode, align_corners=False)
 
@@ -100,7 +105,13 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     print('Final Loss:', final_loss)
 
     canvas = torch.clamp( stylized_im[0], 0., 1.).data.cpu().numpy().transpose(1,2,0)
-    result_image = tensor_to_np(tensor_resample(canvas))
+    
+    img = PIL.Image.open(content_path)
+    content_pil = img.convert('RGB')
+    content_np = pil_to_np(content_pil)
+    device='cuda:0'
+    content_full = np_to_tensor(content_np, space).to(device)
+    result_image = tensor_to_np(tensor_resample(canvas, [content_full.shape[2], content_full.shape[3]]))
 
     # renormalize image
     result_image -= result_image.min()
