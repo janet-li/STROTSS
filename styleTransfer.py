@@ -12,6 +12,7 @@ from glob import glob
 from io import BytesIO
 import requests
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import torchvision.transforms as transforms
 
 import st_helper
@@ -132,7 +133,11 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     show_img(pil_to_np(result))
     '''
     show_img(canvas)
+    plt.imshow(canvas)
     imwrite(output_path,canvas)
+    img = mpimg.imread(canvas)
+    imgplot = plt.imshow(img)
+    plt.show()
     return final_loss , canvas
 
 if __name__=='__main__':
