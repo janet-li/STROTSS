@@ -6,6 +6,7 @@ import torch.nn.functional as F
 
 import contextual_loss
 import utils
+import numpy as np
 
 use_random=True
 
