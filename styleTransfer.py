@@ -135,12 +135,13 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     result = np_to_pil(result_image * 255.)
     show_img(pil_to_np(result))
     '''
-    
-    
+    canvas = (canvas*255.).astype(np.uint8)
+    im = PIL.Image.fromarray(canvas)
+    im.save(output_path)
     show_img(canvas)
     plt.imshow(canvas)
     #imwrite(output_path, img_as_ubyte(canvas))
-    cv2.imwrite(output_path, (canvas*255.).astype(np.uint8))
+    cv2.imwrite(output_path, canvas)
     #img = mpimg.imread(canvas)
     #imgplot = plt.imshow(img)
     plt.show()
