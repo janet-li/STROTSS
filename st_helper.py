@@ -64,7 +64,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
 
     z_s_all = []
     for ri in range(len(regions[1])):
-        z_s, style_ims = load_style_folder(phi2, paths, regions,ri, n_samps=-1, subsamps=1000, scale=long_side, inner=5)
+        z_s, style_ims = utils.load_style_folder(phi2, paths, regions,ri, n_samps=-1, subsamps=1000, scale=long_side, inner=5)
         z_s_all.append(z_s)
 
     ### Extract guidance features if required ###
