@@ -17,6 +17,9 @@ import st_helper
 import utils
 import PIL
 
+def tensor_resample(tensor, dst_size, mode='bilinear'):
+    return F.interpolate(tensor, dst_size, mode=mode, align_corners=False)
+
 def tensor_to_np(tensor, cut_dim_to_3=True):
     if len(tensor.shape) == 4:
         if cut_dim_to_3:
