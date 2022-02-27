@@ -104,7 +104,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
         ### zero out gradients and compute output image from pyramid ##
         optimizer.zero_grad()
         if use_pyr:
-            stylized_im = syn_lap_pyr(s_pyr)
+            stylized_im = pyr_lap.syn_lap_pyr(s_pyr)
         else:
             stylized_im = s_pyr[0]
 
