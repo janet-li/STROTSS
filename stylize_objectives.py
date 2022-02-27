@@ -62,9 +62,9 @@ class objective_class():
             ### Compute Moment Loss (constrains magnitude of features ###
             moment_ell = 0.
             if gz.sum() > 0.:
-                moment_ell = moment_loss(torch.cat([x_st,gx_st],2)[:,:-2,:,:],torch.cat([z_st,gz],2),moments=[1,2])
+                moment_ell = contextual_loss.moment_loss(torch.cat([x_st,gx_st],2)[:,:-2,:,:],torch.cat([z_st,gz],2),moments=[1,2])
             else:
-                moment_ell = moment_loss(x_st[:,:-2,:,:],z_st,moments=[1,2])
+                moment_ell = contextual_loss.moment_loss(x_st[:,:-2,:,:],z_st,moments=[1,2])
 
             ### Add Pallette Matching Loss ###                                        
             content_weight_frac = 1./max(content_weight,1.)
