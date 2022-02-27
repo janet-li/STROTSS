@@ -17,6 +17,14 @@ import st_helper
 import utils
 import PIL
 
+def tensor_to_np(tensor, cut_dim_to_3=True):
+    if len(tensor.shape) == 4:
+        if cut_dim_to_3:
+            tensor = tensor[0]
+        else:
+            return tensor.data.cpu().numpy().transpose((0, 2, 3, 1))
+    return tensor.data.cpu().numpy().transpose((1,2,0))
+
 def np_to_pil(npy):
     return PIL.Image.fromarray(npy.astype(np.uint8))
 
