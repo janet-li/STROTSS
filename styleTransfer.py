@@ -9,6 +9,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
 from imageio import imread, imwrite
+import cv2
 from glob import glob
 from io import BytesIO
 import requests
@@ -139,7 +140,7 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     show_img(canvas)
     plt.imshow(canvas)
     #imwrite(output_path, img_as_ubyte(canvas))
-    imwrite(output_path, (canvas*255.).astype(np.uint8))
+    cv2.imwrite(output_path, (canvas*255.).astype(np.uint8))
     #img = mpimg.imread(canvas)
     #imgplot = plt.imshow(img)
     plt.show()
