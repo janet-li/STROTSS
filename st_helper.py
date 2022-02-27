@@ -76,7 +76,7 @@ def style_transfer(stylized_im, content_im, style_path, output_path, scl, long_s
 
     ### Randomly choose spatial locations to extract features from ###
     if use_pyr:
-        stylized_im = syn_lap_pyr(s_pyr)
+        stylized_im = pyr_lap.syn_lap_pyr(s_pyr)
     else:
         stylized_im = s_pyr[0]
 
