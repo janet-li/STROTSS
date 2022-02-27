@@ -9,9 +9,32 @@ import torch.optim as optim
 import numpy as np
 from imageio import imread, imwrite
 from glob import glob
+from io import BytesIO
+import requests
+import matplotlib.pyplot as plt
 
 import st_helper
 import utils
+import PIL
+
+def np_to_pil(npy):
+    return PIL.Image.fromarray(npy.astype(np.uint8))
+
+def pil_to_np(pil):
+    return np.array(pil)
+
+def show_img(img):
+    # Code for displaying at actual resolution from:
+    # https://stackoverflow.com/questions/28816046/displaying-different-images-with-actual-size-in-matplotlib-subplot
+    dpi = 80
+    height, width, depth = img.shape
+    figsize = width / float(dpi), height / float(dpi)
+    plt.figure(figsize=figsize)
+
+    plt.imshow(img)
+    plt.xticks([])
+    plt.yticks([])
+    plt.show()
 
 def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidance,regions, output_path='output.png'):
 
@@ -66,6 +89,14 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     print('Final Loss:', final_loss)
 
     canvas = torch.clamp( stylized_im[0], 0., 1.).data.cpu().numpy().transpose(1,2,0)
+    result_image = tensor_to_np(tensor_resample(canvas))
+
+    # renormalize image
+    result_image -= result_image.min()
+    result_image /= result_image.max()
+
+    result = np_to_pil(result_image * 255.)
+    show_img(pil_to_np(result))
     imwrite(output_path,canvas)
     return final_loss , canvas
 
