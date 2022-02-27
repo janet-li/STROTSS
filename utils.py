@@ -186,7 +186,7 @@ def extract_regions(content_path,style_path):
     s_regions = imread(style_path).transpose(1,0,2)
     c_regions = imread(content_path).transpose(1,0,2)
     # TEMP
-    c_regions = np.swapaxes(c_regions, 1, 2)
+    # c_regions = np.swapaxes(c_regions, 1, 2)
 
     color_codes,c1 = np.unique(s_regions.reshape(-1, s_regions.shape[2]), axis=0,return_counts=True)
 
