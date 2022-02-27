@@ -120,7 +120,8 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     device='cuda:0'
     space='vgg'
     content_full = np_to_tensor(content_np, space).to(device)
-    result_image = tensor_to_np(tensor_resample(canvas, [content_full.shape[2], content_full.shape[3]]))
+    canvas_t = Variable(torch.from_numpy(canvas))
+    result_image = tensor_to_np(tensor_resample(canvas_t, [content_full.shape[2], content_full.shape[3]]))
 
     # renormalize image
     result_image -= result_image.min()
