@@ -180,4 +180,4 @@ if __name__=='__main__':
             regions = [[imread(content_path)[:,:]*0.+1.], [imread(style_path)[:,:]*0.+1.]]
 
     ### Style Transfer and save output ###
-    loss,canvas = run_st(content_path,style_path,content_weight,max_scl,coords,use_guidance_points,regions,output_path=sys.argv[5])
+    loss,canvas = run_st(content_path,style_path,content_weight,max_scl,coords,use_guidance_points,regions)
