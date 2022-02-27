@@ -15,6 +15,7 @@ import requests
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import torchvision.transforms as transforms
+from skimage import img_as_ubyte
 
 import st_helper
 import utils
@@ -133,9 +134,11 @@ def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidan
     result = np_to_pil(result_image * 255.)
     show_img(pil_to_np(result))
     '''
+    
+    
     show_img(canvas)
     plt.imshow(canvas)
-    imwrite(output_path,canvas)
+    imwrite(output_path, img_as_ubyte(canvas))
     #img = mpimg.imread(canvas)
     #imgplot = plt.imshow(img)
     plt.show()
