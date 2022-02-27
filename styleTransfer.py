@@ -61,7 +61,7 @@ def show_img(img):
     plt.yticks([])
     plt.show()
 
-def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidance,regions, output_path='/content/output.png'):
+def run_st(content_path, style_path, content_weight, max_scl, coords, use_guidance,regions, output_path=os.path.join(os.getcwd(), "./output.png")):
 
     smll_sz = 64
     
