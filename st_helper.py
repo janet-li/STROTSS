@@ -9,6 +9,7 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 import torch.optim as optim
 from imageio import imread, imwrite
+import numpy as np
 
 import utils
 import vgg_pt
